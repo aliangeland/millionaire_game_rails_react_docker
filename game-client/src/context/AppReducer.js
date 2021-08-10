@@ -6,10 +6,7 @@ export default function appReducer(state, action) {
         user: action.user,
       };
     case "SET_USER_SCORE":
-      console.log("zzz:" + action.score);
       state["user"]["score"] = action.score;
-      console.log(state);
-
       return {
         ...state,
         user: state["user"],

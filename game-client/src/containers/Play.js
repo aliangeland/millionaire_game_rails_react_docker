@@ -38,8 +38,6 @@ const Play = () => {
   };
 
   const answerQuestion = async (answerId) => {
-    console.log(answerId)
-    console.log(localStorage.token)
     return await fetch(`http://localhost:3000/api/users/play`, {
       method: "POST",
       headers: {
@@ -52,7 +50,6 @@ const Play = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
         if (!data.failure) {
           setUserScore(user.score + data.points);
           setQuestions(

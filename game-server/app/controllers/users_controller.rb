@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       token = encode(payload)
       render json: { user: user, token: token, success: 'Welcome!' }
     else
-      render json: { user: user, token: token, success: 'Oops! something went wrong' }
+      render json: { failure: 'Registration failed! check the inputs.' }, status: 422
     end
   end
 
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       token = encode(payload)
       render json: { user: user, token: token, success: "Welcome back, #{user.name}" }, status: 200
     else
-      render json: { failure: 'Login failed! name or password must be wrong!' }, status: 401
+      render json: { failure: 'Login failed! name or password must be wrong.' }, status: 401
     end
   end
 

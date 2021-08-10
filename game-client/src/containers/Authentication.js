@@ -45,7 +45,6 @@ function Authentication() {
   };
 
   const setAuthDataAndNavigate = (data) => {
-    console.log(data)
     if (!data.failure) {
       localStorage.setItem("token", data.token);
       setUser(data.user);
