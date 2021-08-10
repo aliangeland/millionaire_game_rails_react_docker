@@ -18,7 +18,7 @@ Note: for removing containers you can execute:
 
     $ docker-compose down -v
 
-Note: you can access the client using http://localhost:3001
+Note: you can access the client using http://localhost:3001 and also Database management system using http://localhost:8080 | example db credentials --> db_name: game_db, db_username: root, db_password: root
 
 Note: available admin account --> name: admin, password: admin
 

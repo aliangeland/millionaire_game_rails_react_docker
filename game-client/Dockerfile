@@ -1,21 +1,23 @@
-# pull official base image
 FROM node:latest
 
-# set working directory
+RUN mkdir /app
 WORKDIR /app
 
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
-
-# install app dependencies
 COPY package.json ./
 COPY package-lock.json ./
-RUN npm install --silent
+
+RUN chown -Rh $user:$user ./
+USER $user
+
+RUN npm install --silentdo
 RUN npm config set unsafe-perm true
 RUN npm install react-scripts@latest -g --silent
 
-# add app
 COPY . ./
 
-# start app
+COPY ./entrypoint.sh /
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+
 CMD ["npm", "start"]
+
